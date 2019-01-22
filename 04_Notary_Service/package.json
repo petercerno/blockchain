@@ -1,0 +1,20 @@
+{
+  "name": "project_4",
+  "version": "1.0.0",
+  "description": "Private Blockchain Notary Service",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Cerno",
+  "license": "ISC",
+  "dependencies": {
+    "bitcore-message": "^1.0.4",
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
+    "level": "^4.0.0",
+    "promise": "^8.0.2"
+  },
+  "devDependencies": {}
+}

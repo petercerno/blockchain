@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Private Blockchain Notary Service</title>
+  </head>
+  <body>
+    <h1>Private Blockchain Notary Service</h1>
+    <p>
+      Star Registry service that allows users to claim ownership of their
+      favorite star in the night sky.
+    </p>
+    <h2>POST Endpoints</h2>
+    <h3>Request Validation</h3>
+    <p><b>URL</b>: <code>http://localhost:8000/requestValidation</code></p>
+    <p><b>Required Parameters</b>:</p>
+    <ul>
+      <li>
+        <code>address</code>: Valid Bitcoin address (representing user's
+        blockchain identity).
+      </li>
+    </ul>
+    <p>Allows users to submit validation requests using their wallet address.</p>
+    <p><b>Example</b>:</p>
+    <pre>
+curl -X "POST" "http://localhost:8000/requestValidation" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'{
+  "address": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG"
+}'
+    </pre>
+    <p>
+       After submitting a request, the user will receive a response in JSON
+       format with a message to sign (in order to verify their blockchain
+       identity).
+    </p>
+    <p><b>Example JSON Response</b>:</p>
+    <pre>
+{
+  "address": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG",
+  "requestTimeStamp": "1538906173",
+  "message": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG:1538906173:starRegistry",
+  "validationWindow": 300
+}
+    </pre>
+    <h3>Message Signature</h3>
+    <p>
+      <b>URL</b>: <code>http://localhost:8000/message-signature/validate</code>
+    </p>
+    <p><b>Required Parameters</b>:</p>
+    <ul>
+      <li>
+        <code>address</code>: Valid Bitcoin address (representing user's
+        blockchain identity).
+      </li>
+      <li>
+        <code>signature</code>: Message signature from the previous validation
+        response.
+      </li>
+    </ul>
+    <p>
+      After receiving the response for the validation request, users can verify
+      their blockchain identity by signing a message with their wallet. Once
+      they sign the message, the application will validate their request and
+      grant access to register a star.
+    </p>
+    <p>
+      Note that users must verify their blockchain identity within the given
+      validation window. When re-submitting the validation request within the
+      validation window, the validation window will reduce until it expires.
+    </p>
+    <p><b>Example</b>:</p>
+    <pre>
+curl -X "POST" "http://localhost:8000/message-signature/validate" \
+    -H 'Content-Type: application/json; charset=utf-8' \
+    -d $'{
+  "address": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG",
+  "signature": "H1oOdFYwz9qIZxxvByI0GSM+hNXgz1YuyeqWzP7raVmLKvN1Lrxcg5PwqbjYeco/hYf2Ed/UqYJB18IFJW3gxBI="
+}'
+    </pre>
+    <p><b>Example JSON Response</b>:</p>
+    <pre>
+{
+  "registerStar": true,
+  "status": {
+    "address": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG",
+    "requestTimeStamp": "1538906173",
+    "message": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG:1538906173:starRegistry",
+    "validationWindow": 300,
+    "messageSignature": "valid"
+  }
+}
+    </pre>
+    <h3>Star Registration</h3>
+    <p>
+      <b>URL</b>: <code>http://localhost:8000/block</code>
+    </p>
+    <p><b>Required Parameters</b>:</p>
+    <ul>
+      <li>
+        <code>address</code>: Valid Bitcoin address (representing user's
+        blockchain identity).
+      </li>
+      <li>
+        <code>star</code>: JSON object representing a star.
+      </li>
+    </ul>
+    <p>
+      Once users have verified their blockchain identity (by submitting a valid
+      message signature), they can register a star.
+    </p>
+    <p>Note that users can register only one star per verified request.</p>
+    <p><b>Example</b>:</p>
+    <pre>
+curl -X "POST" "http://localhost:8000/block" \
+    -H 'Content-Type: application/json; charset=utf-8' \
+    -d $'{
+  "address": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG",
+  "star": {
+    "dec": "-26° 29'\'' 24.9",
+    "ra": "16h 29m 1.0s",
+    "story": "Found star using https://www.google.com/sky/"
+  }
+}'
+    </pre>
+    <p><b>Example JSON Response</b>:</p>
+    <pre>
+{
+  "hash": "2291a204c30f1012aa6898ddf6366b90a7fb5f5a596661e1aa399ca77a9f2d0e",
+  "height": 2,
+  "body": {
+    "address": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG",
+    "star": {
+      "ra": "16h 29m 1.0s",
+      "dec": "-26° 29' 24.9",
+      "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+    }
+  },
+  "time": "1538907260",
+  "previousBlockHash": "d475eb851be25aa17a183b30aac7814ea9c66d7df3a32142cf0b649552cf3975"
+}
+    </pre>
+    <h2>GET Endpoints</h2>
+    <h3>Star Lookup by Address</h3>
+    <p>
+      <b>URL</b>: <code>http://localhost:8000/stars/address:[address]</code>
+    </p>
+    <p>Searches stars by blockchain wallet address.</p>
+    <p><b>Example</b>:</p>
+    <pre>curl "http://localhost:8000/stars/address:1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG"</pre>
+    <p><b>Example JSON Response</b>:</p>
+    <pre>
+[
+  {
+    "hash": "2291a204c30f1012aa6898ddf6366b90a7fb5f5a596661e1aa399ca77a9f2d0e",
+    "height": 2,
+    "body": {
+      "address": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG",
+      "star": {
+        "ra": "16h 29m 1.0s",
+        "dec": "-26° 29' 24.9",
+        "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f",
+        "storyDecoded": "Found star using https://www.google.com/sky/"
+      }
+    },
+    "time": "1538907260",
+    "previousBlockHash": "d475eb851be25aa17a183b30aac7814ea9c66d7df3a32142cf0b649552cf3975"
+  }
+]
+    </pre>
+    <h3>Star Lookup by Block Hash</h3>
+    <p>
+      <b>URL</b>: <code>http://localhost:8000/stars/hash:[hash]</code>
+    </p>
+    <p>Searches stars by block hash.</p>
+    <p>Returns status <code>404 Not Found</code> for unknown block hash.</p>
+    <p><b>Example</b>:</p>
+    <pre>curl "http://localhost:8000/stars/hash:2291a204c30f1012aa6898ddf6366b90a7fb5f5a596661e1aa399ca77a9f2d0e"</pre>
+    <h3>Star Lookup by Block Height</h3>
+    <p>
+      <b>URL</b>: <code>http://localhost:8000/block/[height]</code>
+    </p>
+    <p>Searches stars by block height.</p>
+    <p>Returns status <code>404 Not Found</code> for invalid block height.</p>
+    <p><b>Example</b>:</p>
+    <pre>curl "http://localhost:8000/block/2"</pre>
+    <p>In both cases we get the following JSON response:</p>
+    <p><b>Example JSON Response</b>:</p>
+    <pre>
+{
+  "hash": "2291a204c30f1012aa6898ddf6366b90a7fb5f5a596661e1aa399ca77a9f2d0e",
+  "height": 2,
+  "body": {
+    "address": "1MGATqem3W69iPhrbJa4HFgRkr2vi8cdJG",
+    "star": {
+      "ra": "16h 29m 1.0s",
+      "dec": "-26° 29' 24.9",
+      "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f",
+      "storyDecoded": "Found star using https://www.google.com/sky/"
+    }
+  },
+  "time": "1538907260",
+  "previousBlockHash": "d475eb851be25aa17a183b30aac7814ea9c66d7df3a32142cf0b649552cf3975"
+}
+    </pre>
+  </body>
+</html>
