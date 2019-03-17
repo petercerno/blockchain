@@ -13,21 +13,30 @@ This section enumerates the projects you need to complete in order to receive yo
 
 Learn to identify fundamental transaction types, build a web service and API, and secure digital assets with your blockchain identity. Create a private blockchain, and a notarization web service. Use your blockchain identity to secure digital assets on the Ethereum platform with a smart contract.
 
-## Blockchain Identity
+### Blockchain Identity
 
 * **Project**: Create Your Identity on Bitcoin Core
 
-## Blockchain Data
+### Blockchain Data
 
 * **Project**: Create Your Own Private Blockchain
 
-## Blockchain Web Services
+### Blockchain Web Services
 
 Create a web service using third-party libraries that will interact with your private blockchain to submit and audit blockchain data.
 
 * **Project**: Connect Private Blockchain to Front-End Client via APIs
 * **Project**: Secure Digital Assets on a Private Blockchain
 
-## Identity and Smart Contracts
+### Identity and Smart Contracts
 
 * **Project**: Build CryptoStar Dapp on Ethereum
+
+### Architecture
+
+* **Project**: Architect a Blockchain Supply Chain Solution - Part A
+* **Project**: Architect a Blockchain Supply Chain Solution - Part B
+
+### Advanced Blockchain Concepts and Oracles
+
+* **Project**: Flight Surety Project

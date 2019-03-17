@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Healthcare</h1>
+        <hr>
+        <p style="text-align: center;">Prove the authenticity of patient-doctor session using the Ethereum blockchain.</p>
+    </div>
+
+    <div id="ftc-healthcare">
+        <h2>Owner Dashboard</h2>
+        <div class="form-group">
+            Role Account
+            <br>
+            <input type="text" id="roleAccount" name="roleAccount"
+                value="0x0000000000000000000000000000000000000000" size="50"><br>
+            <div class=button-div>
+                <button class="btn-addPatient" id="button" type="button" data-id="10">Add as Patient</button>
+                <button class="btn-addDoctor" id="button" type="button" data-id="11">Add as Doctor</button>
+                <button class="btn-addLab" id="button" type="button" data-id="12">Add as Lab</button>
+            </div>
+        </div>
+        <div class=form-break></div>
+        <h2>Session Overview</h2>
+        <div class="form-group">
+            Session Id
+            <br>
+            <input class="input-field" type="number" id="sessionId" name="sessionId" value=-1><br>
+            <br>
+            Session Status
+            <br>
+            <input class="readonly" type="text" id="sessionStatus" name="sessionStatus"
+                value="Invalid" size="50" readonly><br>
+            <div class=button-div>
+                <button class="btn-fetchSession" id="button" type="button" data-id="0">Fetch Session</button>
+            </div>
+        </div>
+        <div class=form-break></div>
+        <h2>Patient Details</h2>
+        <div class="form-group">
+            Patient Account
+            <br>
+            <input class="readonly" type="text" id="patientAccount" name="patientAccount"
+                value="0x0000000000000000000000000000000000000000" size="50" readonly><br>
+            <br>
+            Patient State
+            <br>
+            <input class="readonly" type="text" id="patientState" name="patientState" value="" readonly><br>
+            <br>
+            Visit Doctor (Please Enter Doctor Account)
+            <br>
+            <input type="text" id="visitDoctorAccount" name="visitDoctorAccount"
+                value="0x0000000000000000000000000000000000000000" size="50"><br>
+            <div class=button-div>
+                <button class="btn-visitDoctor" id="button" type="button" data-id="1">Visit Doctor</button>
+                <button class="btn-payBill" id="button" type="button" data-id="6">Pay Bill</button>
+                <button class="btn-leaveDoctor" id="button" type="button" data-id="7">Leave Doctor</button>
+            </div>
+        </div>
+        <div class=form-break></div>
+        <h2>Doctor Details</h2>
+        <div class="form-group">
+            Doctor Account
+            <br>
+            <input class="readonly" type="text" id="doctorAccount" name="doctorAccount"
+                value="0x0000000000000000000000000000000000000000" size="50" readonly><br>
+            <br>
+            Doctor State
+            <br>
+            <input class="readonly" type="text" id="doctorState" name="doctorState" value="" readonly><br>
+            <br>
+            Send to Lab (Please Enter Lab Account)
+            <br>
+            <input type="text" id="sendToLabAccount" name="sendToLabAccount"
+                value="0x0000000000000000000000000000000000000000" size="50"><br>
+            <div class=button-div>
+                <button class="btn-takeBlood" id="button" type="button" data-id="2">Take Blood</button>
+                <button class="btn-sendBloodToLab" id="button" type="button" data-id="3">Send Blood to Lab</button>
+                <button class="btn-writePrescription" id="button" type="button" data-id="5">Write Prescription</button>
+            </div>
+        </div>
+        <div class=form-break></div>
+        <h2>Lab Details</h2>
+        <div class="form-group">
+            Lab Account
+            <br>
+            <input class="readonly" type="text" id="labAccount" name="labAccount"
+                value="0x0000000000000000000000000000000000000000" size="50" readonly><br>
+            <br>
+            <div class=button-div>
+                <button class="btn-sendBloodResults" id="button" type="button" data-id="4">Send Blood Results</button>
+            </div>
+        </div>
+        <div class=form-break></div>
+        <hr>
+    </div>
+
+    <h2>Transaction History<span id="ftc-history"></span></h2>
+    <div>
+        <ul id="ftc-events">
+            <!-- Events will appear here from app.js -->
+        </ul>
+        <br>
+        <hr>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="js/web3.min.js"></script> -->
+    <script src="node_modules/bignumber.js/bignumber.js"></script>
+    <script src="node_modules/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
