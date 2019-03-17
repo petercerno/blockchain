@@ -32,6 +32,8 @@ Create a web service using third-party libraries that will interact with your pr
 
 * **Project**: Build CryptoStar Dapp on Ethereum
 
+## Term 2 | Blockchain Developer: Architecture and Applications
+
 ### Architecture
 
 * **Project**: Architect a Blockchain Supply Chain Solution - Part A
