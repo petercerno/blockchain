@@ -34,11 +34,23 @@ Create a web service using third-party libraries that will interact with your pr
 
 ## Term 2 | Blockchain Developer: Architecture and Applications
 
+Begin working with blockchain architecture, and continue your exploration of second generation services by focusing on solving a supply chain problem set. Learn to start layering blockchain services with legacy integration, to further develop your platform-agnostic blockchain skills.
+
 ### Architecture
+
+Explore the world of architecting a blockchain supply chain.
 
 * **Project**: Architect a Blockchain Supply Chain Solution - Part A
 * **Project**: Architect a Blockchain Supply Chain Solution - Part B
 
 ### Advanced Blockchain Concepts and Oracles
 
-* **Project**: Flight Surety Project
+Advance your blockchain skill set by developing a decentralized application (Dapp) that will perform actions based on external triggers, and handle payments.
+
+* **Project**: FlightSurety
+
+### Capstone
+
+Apply your knowledge to build a decentralized housing project.
+
+* **Project**: Capstone: Real Estate Marketplace

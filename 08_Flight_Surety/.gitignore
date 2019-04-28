@@ -1,0 +1,6 @@
+# Deployment configs
+src/dapp/config.json
+src/server/config.json
+
+# Dependency directories
+node_modules/

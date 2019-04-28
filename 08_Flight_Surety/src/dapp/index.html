@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FlightSurety</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">FlightSurety</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <main>
+        <div id="display-wrapper" class="container top-20"></div>
+        <div class="container top-20">
+            <h2>Register Airline</h2>
+            <div class="row top-20">
+                <label class="form">Address</label>
+                <input type="text" id="airline-address">
+                <label class="form">Name</label>
+                <input type="text" id="airline-name">
+            </div>
+            <div class="row top-20">
+                <label class="form"></label>
+                <btn class="btn btn-primary" id="register-airline">Register Airline</btn>
+            </div>
+            <div class="container top-20-no-padding" id="register-airline-output"></div>
+        </div>
+        <div class="container top-20">
+            <h2>Fund Airline</h2>
+            <div class="row top-20">
+                <label class="form">Funds</label>
+                <input type="number" id="airline-funds">
+            </div>
+            <div class="row top-20">
+                <label class="form"></label>
+                <btn class="btn btn-primary" id="fund-airline">Fund Airline</btn>
+            </div>
+            <div class="container top-20-no-padding" id="fund-airline-output"></div>
+        </div>
+        <div class="container top-20">
+            <h2>Register Flight</h2>
+            <div class="row top-20">
+                <label class="form">Flight Code</label>
+                <input type="text" id="flight-code">
+                <label class="form">Timestamp</label>
+                <input type="number" id="flight-timestamp">
+            </div>
+            <div class="row top-20">
+                <label class="form">Departure</label>
+                <input type="text" id="flight-departure">
+                <label class="form">Destination</label>
+                <input type="text" id="flight-destination">
+            </div>
+            <div class="row top-20">
+                <label class="form"></label>
+                <btn class="btn btn-primary" id="register-flight">Register Flight</btn>
+            </div>
+            <div class="container top-20-no-padding" id="register-flight-output"></div>
+        </div>
+        <div class="container top-20">
+            <h2>Buy Flight Insurance</h2>
+            <div class="row top-20">
+                <label class="form">Flight</label>
+                <select name="text" id="select-flight-1"></select>
+            </div>
+            <div class="row top-20">
+                <label class="form">Insurance</label>
+                <input type="number" id="flight-insurance">
+            </div>
+            <div class="row top-20">
+                <label class="form"></label>
+                <btn class="btn btn-primary" id="buy-flight-insurance">Buy Flight Insurance</btn>
+            </div>
+            <div class="container top-20-no-padding" id="buy-flight-insurance-output"></div>
+        </div>
+        <div class="container top-20">
+            <h2>Flight Status</h2>
+            <div class="row top-20">
+                <label class="form">Flight</label>
+                <select name="text" id="select-flight-2"></select>
+            </div>
+            <div class="row top-20">
+                <label class="form"></label>
+                <btn class="btn btn-primary" id="fetch-flight-status">Fetch Flight Status</btn>
+            </div>
+            <div class="container top-20-no-padding" id="fetch-flight-status-output"></div>
+        </div>
+        <div class="container top-20">
+            <h2>Claim Insurance</h2>
+            <div class="row top-20">
+                <label class="form">My Credit</label>
+                <input class="readonly" type="text" id="credit" readonly>
+                <label class="form">My Balance</label>
+                <input class="readonly" type="text" id="balance" readonly>
+            </div>
+            <div class="row top-20">
+                <label class="form"></label>
+                <btn class="btn btn-primary" id="check-credit">Check My Credit</btn>
+            </div>
+            <div class="row top-20">
+                <label class="form"></label>
+                <btn class="btn btn-primary" id="claim-insurance">Claim Insurance</btn>
+            </div>
+            <div class="container top-20-no-padding" id="claim-insurance-output"></div>
+        </div>
+    </main>
+</body>
+
+</html>
