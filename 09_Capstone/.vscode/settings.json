@@ -1,0 +1,22 @@
+{
+  "solidity.linter": "solhint",
+  "solidity.compileUsingRemoteVersion" : "v0.5.7",
+  "solidity.solhintRules": {
+    "avoid-sha3": "warn",
+    "avoid-suicide": "error",
+    "indent": [
+      "warn",
+      4
+    ],
+    "var-name-mixedcase": "warn",
+    "func-order": "warn",
+    "func-param-name-mixedcase": "warn",
+    "code-complexity": 15,
+  },
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+}
